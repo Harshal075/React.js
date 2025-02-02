@@ -20,7 +20,7 @@ export const Header = () =>{
 
 export const Footer = () =>{
     return(<h1 style={{textAlign:"center" , backgroundColor:"red"}}>
-        copyright@hp
+        Copyright @ 2025 All Right Reserved
     </h1>
     )
 }
