@@ -2,8 +2,14 @@ import { useState } from "react"
 import { TaskCard } from "./TaskCard";
 
 export const Todo = () =>{
+    const todokey = "todoStorage";
     const[inputValue , setValue] = useState("");
-    const[tasks , setTasks] = useState([]);
+    const [tasks, setTasks] = useState(() => {
+        const dataS = localStorage.getItem(todokey);
+        if(!dataS) return [];
+        return JSON.parse(dataS);
+    });
+    
     const[DateTime , setDateTime] = useState("");
 
     const handleClearButton =()=>{
@@ -46,6 +52,9 @@ export const Todo = () =>{
         setTasks((prev)=>[...prev , inputValue]);
         setValue("");
     }
+
+    localStorage.setItem(todokey , JSON.stringify(tasks));
+
 
     return(<>
         <h1>Todo List</h1>
